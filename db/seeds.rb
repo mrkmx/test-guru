@@ -39,8 +39,14 @@ tests = [
   {title: 'Test 3', level: 2, category_id: 2},
 ]
 
+results = [
+  {user_id: 1, test_id: 1},
+  {user_id: 1, test_id: 2},
+]
+
 User.create!(users) if Rails.env.development?
 Category.create!(categories)
 Test.create!(tests)
 Question.create!(questions)
 Answer.create!(answers)
+Result.create!(results)

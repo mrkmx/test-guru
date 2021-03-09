@@ -1,5 +1,6 @@
 class Test < ApplicationRecord
   belongs_to :category
+  has_many :result
 
   def self.by_category(title)
     joins(:category).where('categories.title = ?', title).order(title: :desc).pluck(:title)
