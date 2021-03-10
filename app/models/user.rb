@@ -4,6 +4,6 @@ class User < ApplicationRecord
   has_many :answers
 
   def tests_by_level(level)
-    Test.where(level: level).joins(:tests).where('results.user_id = ?', id)
+    tests.where(level: level)
   end
 end
