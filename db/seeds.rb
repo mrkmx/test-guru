@@ -38,3 +38,8 @@ answers = Answer.create!([
   {body: 'Answer 8', question_id: questions[7].id},
   {body: 'Answer 9', question_id: questions[8].id},
 ])
+
+tests_users = TestsUser.create!([
+  {user_id: users[0].id, test_id: tests[0].id},
+  {user_id: users[0].id, test_id: tests[2].id},
+])
