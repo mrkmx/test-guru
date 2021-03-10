@@ -1,52 +1,45 @@
-users = [
+users = User.create!([
   {name: 'Matz', admin: false},
   {name: 'DHH', admin: false},
   {name: 'mrkmx', admin: true},
-]
+])
 
-answers = [
-  {body: 'Answer 1', question_id: 1},
-  {body: 'Answer 2', question_id: 2},
-  {body: 'Answer 3', question_id: 3},
-  {body: 'Answer 4', question_id: 4},
-  {body: 'Answer 5', question_id: 5},
-  {body: 'Answer 6', question_id: 6},
-  {body: 'Answer 7', question_id: 7},
-  {body: 'Answer 8', question_id: 8},
-  {body: 'Answer 9', question_id: 9},
-]
-
-categories = [
+categories = Category.create!([
   {title: 'Category 1'},
   {title: 'Category 2'},
-]
+])
 
-questions = [
-  {body: 'Question 1-1', test_id: 1},
-  {body: 'Question 1-2', test_id: 1},
-  {body: 'Question 1-3', test_id: 1},
-  {body: 'Question 2-1', test_id: 2},
-  {body: 'Question 2-2', test_id: 2},
-  {body: 'Question 2-3', test_id: 2},
-  {body: 'Question 3-1', test_id: 3},
-  {body: 'Question 3-2', test_id: 3},
-  {body: 'Question 3-3', test_id: 3},
-]
+tests = Test.create!([
+  {title: 'Test 1', level: 0, category_id: categories[0][:id]},
+  {title: 'Test 2', level: 1, category_id: categories[1][:id]},
+  {title: 'Test 3', level: 2, category_id: categories[1][:id]},
+])
 
-tests = [
-  {title: 'Test 1', level: 0, category_id: 1},
-  {title: 'Test 2', level: 1, category_id: 2},
-  {title: 'Test 3', level: 2, category_id: 2},
-]
+questions = Question.create!([
+  {body: 'Question 1-1', test_id: tests[0][:id]},
+  {body: 'Question 1-2', test_id: tests[0][:id]},
+  {body: 'Question 1-3', test_id: tests[0][:id]},
+  {body: 'Question 2-1', test_id: tests[1][:id]},
+  {body: 'Question 2-2', test_id: tests[1][:id]},
+  {body: 'Question 2-3', test_id: tests[1][:id]},
+  {body: 'Question 3-1', test_id: tests[2][:id]},
+  {body: 'Question 3-2', test_id: tests[2][:id]},
+  {body: 'Question 3-3', test_id: tests[2][:id]},
+])
 
-results = [
-  {user_id: 1, test_id: 1},
-  {user_id: 1, test_id: 2},
-]
+answers = Answer.create!([
+  {body: 'Answer 1', question_id: questions[0][:id]},
+  {body: 'Answer 2', question_id: questions[1][:id]},
+  {body: 'Answer 3', question_id: questions[2][:id]},
+  {body: 'Answer 4', question_id: questions[3][:id]},
+  {body: 'Answer 5', question_id: questions[4][:id]},
+  {body: 'Answer 6', question_id: questions[5][:id]},
+  {body: 'Answer 7', question_id: questions[6][:id]},
+  {body: 'Answer 8', question_id: questions[7][:id]},
+  {body: 'Answer 9', question_id: questions[8][:id]},
+])
 
-User.create!(users) if Rails.env.development?
-Category.create!(categories)
-Test.create!(tests)
-Question.create!(questions)
-Answer.create!(answers)
-Result.create!(results)
+results = Result.create!([
+  {user_id: users[0][:id], test_id: tests[0][:id]},
+  {user_id: users[0][:id], test_id: tests[1][:id]},
+])
