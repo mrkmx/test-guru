@@ -10,9 +10,9 @@ categories = Category.create!([
 ])
 
 tests = Test.create!([
-  {title: 'Test 1', level: 0, category_id: categories[0].id},
-  {title: 'Test 2', level: 1, category_id: categories[1].id},
-  {title: 'Test 3', level: 2, category_id: categories[1].id},
+  {title: 'Test 1', level: 0, category_id: categories[0].id, author_id: users[2].id},
+  {title: 'Test 2', level: 1, category_id: categories[1].id, author_id: users[2].id},
+  {title: 'Test 3', level: 2, category_id: categories[1].id, author_id: users[2].id},
 ])
 
 questions = Question.create!([
