@@ -5,6 +5,11 @@ class Test < ApplicationRecord
   has_many :tests_users
   has_many :users, through: :tests_users
 
+  validates :title, presence: true,
+                    uniqueness: { scope: :level,
+                                  message: "Может существовать только один Тест с данным названием и уровнем" }
+  validates :level, numericality: { only_integer: true, greater_than: 0 }
+
   scope :by_grade, -> (grade) { where(level: level_range(grade)) }
   scope :by_level, -> (level) { where(level: level) }
   scope :title_by_category, -> (title) { joins(:category).where('categories.title = ?', title).order(title: :desc).pluck(:title) }
