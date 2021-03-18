@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  # Вопрос: реализация переносится в класс Test,
-  # а вместо инстанс-метода теперь используем конструкцию вида my_user.tests.by_level(1)?
-  # https://guides.rubyonrails.org/active_record_querying.html#scopes
+  def tests_by_level(level)
+    tests.by_level(level)
+  end
 end
