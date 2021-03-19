@@ -21,9 +21,16 @@ class Test < ApplicationRecord
   private
 
   def self.level_range(grade)
-    return 0..1 if grade == :easy
-    return 2..4 if grade == :medium
-    return 5..Float::INFINITY if grade == :hard
+    case grade
+    when :easy
+      0..1
+    when :medium
+      2..4
+    when :hard
+      5..Float::INFINITY
+    else
+      raise 'Доступные уровни: :easy, :medium, :hard '
+    end
   end
 
 end
