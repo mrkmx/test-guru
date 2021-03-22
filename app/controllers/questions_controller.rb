@@ -23,7 +23,6 @@ class QuestionsController < ApplicationController
       redirect_to test_questions_path
     else
       render plain: @question.errors.messages
-      # or render :new
     end
   end
 
