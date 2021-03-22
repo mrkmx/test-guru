@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :test, only: %i[index create new]
   before_action :question, only: %i[show destroy]  # не было в задании, но сделал для удобства
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   
   # /tests/1/questions
   def index
@@ -43,5 +44,9 @@ class QuestionsController < ApplicationController
 
   def question
     @question = Question.find(params[:id])
+  end
+
+  def record_not_found
+    render plain: "404 Not Found", status: 404
   end
 end
