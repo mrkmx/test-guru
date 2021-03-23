@@ -1,8 +1,8 @@
 class Test < ApplicationRecord
   belongs_to :category
   belongs_to :author, class_name: 'User'
-  has_many :questions
-  has_many :tests_users
+  has_many :questions, dependent: :destroy
+  has_many :tests_users, dependent: :destroy
   has_many :users, through: :tests_users
 
   validates :title, presence: true,
@@ -23,9 +23,9 @@ class Test < ApplicationRecord
   def self.level_range(grade)
     case grade
     when :easy
-      0..1
+      1..2
     when :medium
-      2..4
+      3..4
     when :hard
       5..Float::INFINITY
     else

@@ -1,0 +1,7 @@
+<h1><%= @test.title %></h1>
+<ul>
+  <% @test.questions.each do |q| %>
+    <li><%= q.body %></li>
+  <% end %>
+</ul>
+<p><%= link_to 'Назад', tests_path %></p>
