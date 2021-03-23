@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :test, only: %i[show destroy]
+  before_action :test, only: %i[show destroy edit update]
   before_action :all_tests, only: %i[index]
   
   def index; end
@@ -13,9 +13,19 @@ class TestsController < ApplicationController
   def create
     @test = Test.new(test_params)
     if @test.save
-      redirect_to tests_path
+      redirect_to @test
     else
-      render plain: @test.errors.messages
+      render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @test.update(test_params)
+      redirect_to @test
+    else
+      render :edit
     end
   end
 
