@@ -1,17 +1,13 @@
 class QuestionsController < ApplicationController
+  before_action :question, only: %i[show edit update destroy]
+  before_action :test, only: %i[new create]
   # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-  def show
-    @question = Question.find(params[:id])
-  end
-
   def new
-    @test = Test.find(params[:test_id])
     @question = @test.questions.new
   end
 
   def create
-    @test = Test.find(params[:test_id])
     @question = @test.questions.new(question_params)
     if @question.save
       redirect_to test_path(@test)
@@ -21,12 +17,10 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @question = Question.find(params[:id])
     @test = @question.test
   end
 
   def update
-    @question = Question.find(params[:id])
     if @question.update(question_params)
       redirect_to test_path(@question.test)
     else
@@ -35,7 +29,6 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question = Question.find(params[:id])
     @question.destroy
     redirect_to test_path(@question.test)
   end
@@ -44,6 +37,14 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:body)
+  end
+
+  def question
+    @question = Question.find(params[:id])
+  end
+
+  def test
+    @test = Test.find(params[:test_id])
   end
 
   # def record_not_found
