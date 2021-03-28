@@ -1,34 +1,43 @@
 class QuestionsController < ApplicationController
-  before_action :test, only: %i[index create new]
-  before_action :question, only: %i[show destroy]  # не было в задании, но сделал для удобства
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  
-  # /tests/1/questions
-  def index
-    @questions = @test.questions
-    render plain: @questions.inspect
-  end
+  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-  # /tests/1/questions/2
   def show
-    render plain: @question.inspect
+    @question = Question.find(params[:id])
   end
 
-  # /tests/1/questions/new
-  def new; end
+  def new
+    @test = Test.find(params[:test_id])
+    @question = @test.questions.new
+  end
 
   def create
+    @test = Test.find(params[:test_id])
     @question = @test.questions.new(question_params)
     if @question.save
-      redirect_to test_questions_path
+      redirect_to test_path(@test)
     else
-      render plain: @question.errors.messages
+      render :new
+    end
+  end
+
+  def edit
+    @question = Question.find(params[:id])
+    @test = @question.test
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(question_params)
+      redirect_to test_path(@question.test)
+    else
+      redirect_to :edit
     end
   end
 
   def destroy
+    @question = Question.find(params[:id])
     @question.destroy
-    redirect_to test_questions_path
+    redirect_to test_path(@question.test)
   end
 
   private
@@ -37,15 +46,7 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:body)
   end
 
-  def test
-    @test = Test.find(params[:test_id])
-  end
-
-  def question
-    @question = Question.find(params[:id])
-  end
-
-  def record_not_found
-    render plain: "404 Not Found", status: 404
-  end
+  # def record_not_found
+  #   render plain: "404 Not Found", status: 404
+  # end
 end

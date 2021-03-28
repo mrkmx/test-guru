@@ -1,6 +1,7 @@
 class TestsController < ApplicationController
   before_action :test, only: %i[show destroy edit update]
   before_action :all_tests, only: %i[index]
+  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   
   def index; end
   
@@ -47,4 +48,8 @@ class TestsController < ApplicationController
   def all_tests
     @tests = Test.all
   end
+
+  # def record_not_found
+  #   render plain: "404 Not Found", status: 404
+  # end
 end

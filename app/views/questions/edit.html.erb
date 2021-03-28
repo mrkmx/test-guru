@@ -1,5 +1,5 @@
-<h1>Создать новый вопрос для (<%= @test.title%>)</h1>
-<%= form_with model: [@test, @question], local: true do |f| %>
+<h1>Редактировать вопрос <%= @question.id %> (<%= @test.title%>)</h1>
+<%= form_with model: @question, local: true do |f| %>
   <div class="field">
     <div><%= f.label :question_body %></div>
     <div><%= f.text_field :body, id: :question_body %></div>
