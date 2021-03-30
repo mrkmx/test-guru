@@ -4,6 +4,7 @@
     <tr>
       <th>Название</th>
       <th>Уровень</th>
+      <th>Количество вопросов</th>
       <th colspan="3">Действия</th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
       <tr>
         <td><%= t.title %></td>
         <td><%= t.level%></td>
+        <td><%= t.questions.count %></td>
         <td><%= link_to 'Просмотр', test_path(t) %></td>
         <td><%= link_to 'Редактировать', edit_test_path(t) %></td>
         <td><%= link_to 'Удалить', test_path(t), method: :delete, data: { confirm: 'Уверены?' } %></td>

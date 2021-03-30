@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :question, only: %i[show edit update destroy]
   before_action :test, only: %i[new create]
-  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def new
     @question = @test.questions.new
@@ -46,8 +45,4 @@ class QuestionsController < ApplicationController
   def test
     @test = Test.find(params[:test_id])
   end
-
-  # def record_not_found
-  #   render plain: "404 Not Found", status: 404
-  # end
 end

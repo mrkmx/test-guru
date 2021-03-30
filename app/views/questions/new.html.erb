@@ -1,13 +1,7 @@
-<h1>Создать новый вопрос для (<%= @test.title%>)</h1>
-<%= form_with model: [@test, @question], local: true do |f| %>
-  <div class="field">
-    <div><%= f.label :question_body %></div>
-    <div><%= f.text_field :body, id: :question_body %></div>
-  </div>
-  <div class="field">
-    <%= f.submit %>
-  </div>
-<% end %>
+<h1><%= question_header(@question)%></h1>
+<%= render 'form', model: [@test, @question] %>
 <div>
-<p><%= link_to 'Назад', test_path(@test) %></p>
+  <p>
+    <%= link_to 'Назад', test_path(@test) %>
+  </p>
 </div>
