@@ -1,34 +1,35 @@
 class QuestionsController < ApplicationController
-  before_action :test, only: %i[index create new]
-  before_action :question, only: %i[show destroy]  # не было в задании, но сделал для удобства
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  
-  # /tests/1/questions
-  def index
-    @questions = @test.questions
-    render plain: @questions.inspect
-  end
+  before_action :question, only: %i[show edit update destroy]
+  before_action :test, only: %i[new create]
 
-  # /tests/1/questions/2
-  def show
-    render plain: @question.inspect
+  def new
+    @question = @test.questions.new
   end
-
-  # /tests/1/questions/new
-  def new; end
 
   def create
     @question = @test.questions.new(question_params)
     if @question.save
-      redirect_to test_questions_path
+      redirect_to test_path(@test)
     else
-      render plain: @question.errors.messages
+      render :new
+    end
+  end
+
+  def edit
+    @test = @question.test
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to test_path(@question.test)
+    else
+      redirect_to :edit
     end
   end
 
   def destroy
     @question.destroy
-    redirect_to test_questions_path
+    redirect_to test_path(@question.test)
   end
 
   private
@@ -37,15 +38,11 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:body)
   end
 
-  def test
-    @test = Test.find(params[:test_id])
-  end
-
   def question
     @question = Question.find(params[:id])
   end
 
-  def record_not_found
-    render plain: "404 Not Found", status: 404
+  def test
+    @test = Test.find(params[:test_id])
   end
 end
