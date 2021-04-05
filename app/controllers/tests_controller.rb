@@ -1,6 +1,7 @@
 class TestsController < ApplicationController
-  before_action :test, only: %i[show destroy edit update]
+  before_action :test, only: %i[show destroy edit update start]
   before_action :all_tests, only: %i[index]
+  before_action :user, only: %i[start]
 
   def new
     @test = Test.new
@@ -28,6 +29,11 @@ class TestsController < ApplicationController
     redirect_to tests_path
   end
 
+  def start
+    @user.tests.push(@test)
+    redirect_to @user.test_passage(@test)
+  end
+
   private
 
   def test_params
@@ -40,5 +46,9 @@ class TestsController < ApplicationController
 
   def all_tests
     @tests = Test.all
+  end
+
+  def user
+    @user = User.first
   end
 end
