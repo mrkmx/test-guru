@@ -39,7 +39,7 @@ answers = Answer.create!([
   {body: 'Answer 9', question_id: questions[8].id},
 ])
 
-tests_users = TestsUser.create!([
+test_passages = TestPassage.create!([
   {user_id: users[2].id, test_id: tests[0].id},
   {user_id: users[2].id, test_id: tests[1].id},
   {user_id: users[2].id, test_id: tests[2].id},
