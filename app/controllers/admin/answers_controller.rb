@@ -1,4 +1,4 @@
-class AnswersController < ApplicationController
+class Admin::AnswersController < Admin::BaseController
   before_action :question, only: %i[new create]
   before_action :answer, only: %i[show edit update destroy]
 
@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
     @answer = @question.answers.new(answer_params)
 
     if @answer.save
-      redirect_to @answer, notice: 'Ответ успешно создан'
+      redirect_to admin_answer_path(@answer), notice: 'Ответ успешно создан'
     else
       render :new
     end
@@ -18,7 +18,7 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update(answer_params)
-      redirect_to @answer, notice: 'Ответ успешно обновлён'
+      redirect_to admin_answer_path(@answer), notice: 'Ответ успешно обновлён'
     else
       render :edit
     end
@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer.destroy
-    redirect_to @answer.question, notice: 'Ответ успешно удалён'
+    redirect_to admin_question_path(@answer.question), notice: 'Ответ успешно удалён'
   end
 
   private
