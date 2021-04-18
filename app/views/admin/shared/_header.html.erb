@@ -1,0 +1,13 @@
+<div class="nav nav__admin">
+  <div class="nav__title">
+    <h1>Панель управления</h1>
+  </div>
+  <div class="nav__items">
+    <strong>
+      <%= current_user.first_name || current_user.email %>
+    </strong>
+
+    <%= link_to 'Тесты', admin_tests_path %> | 
+    <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+  </div>
+</div>
