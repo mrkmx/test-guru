@@ -1,4 +1,4 @@
-<%= form_with model: @test, local: true do |f| %>
+<%= form_with model: [:admin, @test], local: true do |f| %>
   <%= render 'shared/errors', resource: @test %>
   
   <div class="field">
@@ -13,10 +13,12 @@
     <div><%= f.label :category_id %></div>
     <div><%= f.collection_select :category_id, Category.all, :id, :title, prompt: true %></div>
   </div>
-  <div class="field">
-    <div><%= f.label :author_id %></div>
-    <div><%= f.collection_select :author_id, User.all, :id, :name, prompt: true %></div>
-  </div>
+  <% if @test.persisted? %>
+    <div class="field">
+      <div><%= f.label :author_id %></div>
+      <div><%= f.collection_select :author_id, User.all, :id, :email, prompt: true %></div>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.submit %>
   </div>
