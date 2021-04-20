@@ -13,6 +13,8 @@ en:
       answer:
         body: 'Answer content'
         correct: 'Correct?'
+    select:
+      prompt: "Please select"
   shared:
     errors:
       header:
