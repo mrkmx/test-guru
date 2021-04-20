@@ -1,0 +1,24 @@
+ru:
+  activerecord:
+    models:
+      test: 'Тест'
+      category: 'Категория'
+      question: 'Вопрос'
+      answer: 'Ответ'
+    attributes:
+      test:
+        title: 'Название'
+        level: 'Уровень'
+        category: 'Категория'
+        author: 'Автор'
+      category:
+        title: 'Название категории'
+      answer:
+        body: 'Тело ответа'
+        correct: 'Верный'
+    errors:
+      messages:
+        blank: 'не может быть пустым'
+        required: 'обязательное поле'
+        greater_than: "должен быть больше, чем %{count}"
+        question: 'может иметь только от 1-го до 4-х ответов.'

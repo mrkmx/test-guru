@@ -1,0 +1,24 @@
+en:
+  activerecord:
+    models:
+      test: 'Test'
+      category: 'Category'
+      question: 'Question'
+      answer: 'Answer'
+    attributes:
+      test:
+        title: 'Title'
+        level: 'Level'
+        category: 'Category'
+        author: 'Author'
+      category:
+        title: 'Category name'
+      answer:
+        body: 'Answer body'
+        correct: 'Correct'
+    errors:
+      messages:
+        blank: "can't be blank"
+        required: 'is required field'
+        greater_than: "must be greater than %{count}"
+        question: 'may have from 1 to 4 answers'
