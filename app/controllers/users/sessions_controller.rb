@@ -1,7 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
   def create
     super
-    flash[:notice] = "Вы вошли как #{set_welcome_name(current_user)}"
+    flash[:success] = "Вы вошли как #{set_welcome_name(current_user)}"
   end
 
   private
