@@ -2,7 +2,15 @@
   <td><%= test.title %></td>
   <td><%= test.level%></td>
   <td><%= test.questions.count %></td>
-  <td><%= link_to t('admin.tests.index.show'), admin_test_path(test) %></td>
-  <td><%= link_to t('admin.tests.index.edit'), edit_admin_test_path(test) %></td>
-  <td><%= link_to t('admin.tests.index.delete'), admin_test_path(test), method: :delete, data: { confirm: t('admin.tests.index.confirm') } %></td>
+  <td>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with action button groups">
+      <div class="btn-group mr-2" role="group" aria-label="Safe Actions Group">
+        <%= link_to t('admin.tests.index.show'), admin_test_path(test), class: 'btn btn-light' %>
+        <%= link_to t('admin.tests.index.edit'), edit_admin_test_path(test), class: 'btn btn-light' %>
+      </div>
+      <div class="btn-group" role="group" aria-label="Unsafe Actions Group">
+        <%= link_to t('admin.tests.index.delete'), admin_test_path(test), method: :delete, data: { confirm: t('admin.tests.index.confirm') }, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  </td>
 </tr>

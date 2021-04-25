@@ -1,9 +1,13 @@
-<h1>Создать новый ответ</h1>
+<div class="container mb-5">
+  <h1>Создать новый ответ</h1>
 
-<p>
-  <%= @question.body %>
-</p>
+  <p>
+    <%= @question.body %>
+  </p>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<p><%= link_to 'Back', admin_question_path(@question) %></p>
+  <div>
+    <%= link_to 'Back', admin_question_path(@question), class: "btn btn-link" %>
+  </div>
+</div>

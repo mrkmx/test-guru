@@ -1,9 +1,13 @@
-<h1>Редактировать ответ</h1>
+<div class="container mb-5">
+  <h1>Редактировать ответ</h1>
 
-<p>
-  <%= @answer.question.body %>
-</p>
+  <p>
+    <%= @answer.question.body %>
+  </p>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<p><%= link_to 'Back', admin_question_path(@answer.question) %></p>
+  <div>
+    <%= link_to 'Back', admin_question_path(@answer.question), class: "btn btn-link" %>
+  </div>
+</div>
