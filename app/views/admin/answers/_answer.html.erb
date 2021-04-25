@@ -1,7 +1,15 @@
 <tr>
   <td><%= answer.body %></td>
   <td><%= answer.correct %></td>
-  <td><%= link_to 'Просмотр', admin_answer_path(answer) %></td>
-  <td><%= link_to 'Редактировать', edit_admin_answer_path(answer) %></td>
-  <td><%= link_to 'Удалить', admin_answer_path(answer), method: :delete, data: { confirm: 'Уверены?' } %></td>
+  <td>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with action button groups">
+      <div class="btn-group mr-2" role="group" aria-label="Safe Actions Group">
+        <%= link_to 'Просмотр', admin_answer_path(answer), class: 'btn btn-light' %>
+        <%= link_to 'Редактировать', edit_admin_answer_path(answer), class: 'btn btn-light' %>
+      </div>
+      <div class="btn-group" role="group" aria-label="Unsafe Actions Group">
+        <%= link_to 'Удалить', admin_answer_path(answer), method: :delete, data: { confirm: 'Уверены?' }, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  </td>
 </tr>

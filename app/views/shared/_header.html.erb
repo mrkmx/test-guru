@@ -1,12 +1,24 @@
 <% if user_signed_in? %>
-  <div class="nav nav__user">
-    <p>
-      <strong>
-        <%= current_user.first_name || current_user.email %>
-      </strong>
-
-      <%= link_to 'Тесты', tests_path %> | 
-      <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
-    </p>
+  <div class="container mb-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%= link_to 'TestGuru', root_path, class: "navbar-brand" %>
+      <% if current_user.admin? %>
+        <small> 
+          <%= link_to 'Перейти в панель управления', admin_tests_path, class: "text-muted" %>
+        </small>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <strong class="navbar-text">
+          <%= current_user.first_name || current_user.email %>
+        </strong>
+        <div class="navbar-nav">
+          <%= link_to 'Тесты', tests_path, class: "nav-item nav-link" %>
+          <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
+        </div>
+      </div>
+    </nav>
   </div>
 <% end %>

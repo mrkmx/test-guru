@@ -1,19 +1,22 @@
-<h1>Вопрос</h1>
+<div class="container mb-5">
+  <h1>Вопрос</h1>
 
-<p>
-  <%= @answer.question.body %>
-</p>
+  <p>
+    <%= @answer.question.body %>
+  </p>
 
-<h2>Ответ:</h2>
+  <h2>Ответ:</h2>
 
-<p>
-  <%= @answer.body %>
-</p>
+  <p>
+    <%= @answer.body %>
+  </p>
 
-<p>
-  <b>Правильный?</b>
-  <%= @answer.correct %>
-</p>
-
-<%= link_to 'Редактировать', edit_admin_answer_path %> |
-<%= link_to 'Назад', admin_question_path(@answer.question) %>
+  <p>
+    <b>Правильный?</b>
+    <%= @answer.correct %>
+  </p>
+  <div>
+    <%= link_to 'Назад', admin_question_path(@answer.question), class: "btn btn-link" %>
+    <%= link_to 'Редактировать', edit_admin_answer_path, class: "btn btn-primary" %>
+  </div>
+</div>
