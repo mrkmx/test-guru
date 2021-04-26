@@ -2,6 +2,8 @@ class TestPassagesController < ApplicationController
   before_action :authenticate_user!
   before_action :test_passage, only: %i[show update result gist]
 
+  HTTP_CREATED_STATUS = 201
+
   def update
     @test_passage.accept!(params[:answer_ids])
 
@@ -17,7 +19,7 @@ class TestPassagesController < ApplicationController
 
   def gist
     result = GistQuestionService.new(@test_passage.current_question).call
-    flash_options = if result.success?
+    flash_options = if result.status == HTTP_CREATED_STATUS
       { notice: t('.success') }
     else
       { alert: t('.failure') }

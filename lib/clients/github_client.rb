@@ -9,6 +9,7 @@ class GithubClient
 
   def create_gist(params)
     @http_client.create_gist(params)
+    @http_client.last_response
   end
 
   private
