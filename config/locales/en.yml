@@ -31,6 +31,9 @@ en:
   test_passages:
     result:
       header: "Test %{title} was completed successfully"
+    gist:
+      success: "Gist saved"
+      failure: "Gist not saved, error"
   tests_mailer:
     completed_test:
       subject: 'The test was completed'
