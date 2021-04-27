@@ -32,7 +32,7 @@ en:
     result:
       header: "Test %{title} was completed successfully"
     gist:
-      success: "Gist saved"
+      success: "Gist saved, link: %{gist_url}"
       failure: "Gist not saved, error"
   tests_mailer:
     completed_test:

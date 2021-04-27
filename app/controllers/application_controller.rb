@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   protect_from_forgery with: :exception
+  add_flash_types :success
 
   def default_url_options
     { lang: I18n.locale == I18n.default_locale ? nil : I18n.locale}
