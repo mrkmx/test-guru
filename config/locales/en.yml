@@ -29,8 +29,13 @@ en:
       actions: 'Actions'
       start: 'Start test'
   test_passages:
+    show:
+      add_gist: "Gist question"
     result:
       header: "Test %{title} was completed successfully"
+    gist:
+      success: "Gist saved, link: %{gist_url}"
+      failure: "Gist not saved, error"
   tests_mailer:
     completed_test:
       subject: 'The test was completed'
@@ -69,3 +74,12 @@ en:
         created: 'The test was created successfully'
       update:
         updated: 'The test was updated successfully'
+    gists:
+      index:
+        header: 'Gists'
+        question: 'Question'
+        gist_link: 'URL'
+        user: 'User'
+  services:
+    gist_question_service:
+      description: "A question about %{test_title} from TestGuru"

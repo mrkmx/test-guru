@@ -9,6 +9,7 @@
         <%= current_user.first_name || current_user.email %>
       </strong>
       <div class="navbar-nav">
+        <%= link_to 'Gists', admin_gists_path, class: "nav-item nav-link" %>
         <%= link_to 'Тесты', admin_tests_path, class: "nav-item nav-link" %>
         <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
       </div>

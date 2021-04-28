@@ -31,8 +31,13 @@ ru:
       actions: 'Действия'
       start: 'Начать тест'
   test_passages:
+    show:
+      add_gist: "Отправить в gist"
     result:
       header: "Тест %{title} был успешно завершен"
+    gist:
+      success: "Gist успешно сохранен, ссылка: %{gist_url}"
+      failure: "Ошибка во время сохранения gist"
   tests_mailer:
     completed_test:
       subject: 'Тест был завершен'
@@ -71,3 +76,12 @@ ru:
         created: "Тест успешно создан"
       update:
         updated: "Тест успешно обновлен"
+    gists:
+      index:
+        header: 'Gists'
+        question: 'Вопрос'
+        gist_link: 'URL'
+        user: 'Пользователь'
+  services:
+    gist_question_service:
+      description: "Вопрос из теста %{test_title} с сайта TestGuru"

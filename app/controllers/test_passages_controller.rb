@@ -1,6 +1,6 @@
 class TestPassagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :test_passage, only: %i[show update result]
+  before_action :test_passage, only: %i[show update result gist]
 
   def update
     @test_passage.accept!(params[:answer_ids])
@@ -14,6 +14,29 @@ class TestPassagesController < ApplicationController
   end
 
   def result; end
+
+  def gist
+    gist_service = GistQuestionService.new(@test_passage.current_question)
+    result = gist_service.call
+    if gist_service.success?
+      url = result[:html_url]
+      save_gist(url)
+      flash[:success] = t('.success', gist_url: view_context.link_to(url, url, target: '_blank'))
+    else
+      flash[:alert] = t('.failure')
+    end
+    redirect_to @test_passage
+  end
+
+  def save_gist(url)
+    Gist.create!(
+      gist_url: url,
+      question: @test_passage.current_question,
+      user: current_user
+      )
+  rescue => e
+    logger.error "Gist not saved: #{e.message}"
+  end
 
   private
 
