@@ -32,9 +32,11 @@ class TestPassagesController < ApplicationController
   def save_gist(url)
     Gist.create!(
       gist_url: url,
-      question: @test_passage.current_question,  
+      question: @test_passage.current_question,
       user: current_user
       )
+  rescue => e
+    logger.error "Gist not saved: #{e.message}"
   end
 
   private
