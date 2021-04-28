@@ -4,9 +4,9 @@ class CreateGists < ActiveRecord::Migration[6.0]
       t.string :gist_url
       t.references :user, null: false, foreign_key: true
       t.references :question, null: false, foreign_key: true
+      t.index :gist_url, unique: true
 
       t.timestamps
     end
-    add_index :gists, :gist_url, unique: true
   end
 end
