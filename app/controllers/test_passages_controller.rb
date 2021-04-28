@@ -2,8 +2,6 @@ class TestPassagesController < ApplicationController
   before_action :authenticate_user!
   before_action :test_passage, only: %i[show update result gist]
 
-  HTTP_CREATED_STATUS = 201
-
   def update
     @test_passage.accept!(params[:answer_ids])
 
@@ -18,9 +16,10 @@ class TestPassagesController < ApplicationController
   def result; end
 
   def gist
-    result = GistQuestionService.new(@test_passage.current_question).call
-    if result.status == HTTP_CREATED_STATUS
-      url = result.data.html_url
+    gist_service = GistQuestionService.new(@test_passage.current_question)
+    result = gist_service.call
+    if gist_service.success?
+      url = result[:html_url]
       save_gist(url)
       flash[:success] = t('.success', gist_url: view_context.link_to(url, url, target: '_blank'))
     else
