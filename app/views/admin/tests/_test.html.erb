@@ -1,12 +1,15 @@
 <tr>
-  <td><%= test.title %></td>
+  <td>
+    <%= content_tag :span, test.title, class: 'js-test-title',  data: { test_id: test.id } %>
+    <%= render 'form_inline', test: test == @test ? @test : test %>
+  </td>
   <td><%= test.level%></td>
   <td><%= test.questions.count %></td>
   <td>
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with action button groups">
       <div class="btn-group mr-2" role="group" aria-label="Safe Actions Group">
         <%= link_to t('admin.tests.index.show'), admin_test_path(test), class: 'btn btn-light' %>
-        <%= link_to t('admin.tests.index.edit'), edit_admin_test_path(test), class: 'btn btn-light' %>
+        <%= link_to t('admin.tests.index.edit'), edit_admin_test_path(test), class: 'btn btn-light js-form-inline-link', data: { test_id: test.id } %>
       </div>
       <div class="btn-group" role="group" aria-label="Unsafe Actions Group">
         <%= link_to t('admin.tests.index.delete'), admin_test_path(test), method: :delete, data: { confirm: t('admin.tests.index.confirm') }, class: 'btn btn-danger' %>

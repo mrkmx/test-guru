@@ -74,6 +74,8 @@ en:
         created: 'The test was created successfully'
       update:
         updated: 'The test was updated successfully'
+      form_inline:
+        submit: 'OK'
     gists:
       index:
         header: 'Gists'
