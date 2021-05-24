@@ -4,6 +4,12 @@
   <%= question_number(@test_passage) %>
 </p>
 
+<%= content_tag :div, class: 'progress js-test-passage-progress', data: { value: @test_passage.passage_progress } do %>
+  <div class="progress-bar progress-bar-striped bg-success" role="progressbar">
+    <%= @test_passage.passage_progress %> %
+  </div>
+<% end %>
+
 <div>
   <p>
     <%= @test_passage.current_question.body %>
