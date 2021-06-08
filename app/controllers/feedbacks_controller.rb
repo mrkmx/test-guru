@@ -1,6 +1,4 @@
 class FeedbacksController < ApplicationController
-  # respond_to :html
-
   def new
     @feedback = Feedback.new
   end
