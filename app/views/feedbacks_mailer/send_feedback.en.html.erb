@@ -1,0 +1,8 @@
+<h1>Feedback from TestGuru</h1>
+<% if @feedback.first_name.present? || @feedback.last_name.present? %>
+  <p><b>From:</b> <%= @feedback.first_name %> <%= @feedback.last_name %></p>
+<% end %>
+<p><b>E-mail:</b> <%= @feedback.email %></p>
+
+<h2>Message:</h2>
+<p><%= @feedback.body %></p>

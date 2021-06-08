@@ -1,0 +1,10 @@
+Обратная связь TestGuru
+=========================================
+<% if @feedback.first_name.present? || @feedback.last_name.present? %>
+  От: <%= @feedback.first_name %> <%= @feedback.last_name %>
+<% end %>
+E-mail: <%= @feedback.email %>
+
+Текст сообщения:
+-----------------------------------------
+  <%= @feedback.body %>

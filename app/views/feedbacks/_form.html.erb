@@ -1,0 +1,31 @@
+<%= form_with model: @feedback, local: true do |form| %>
+  <%= render 'shared/errors', resource: @feedback %>
+
+  <div class="field">  
+    <div><%= form.label :email, t('helpers.label.user.email') %></div>
+    <div>
+      <%= form.email_field :email,
+                            autocomplete: 'email',
+                            class: 'form-control',
+                            value: current_user.try(:email),
+                            required: true
+                            %>
+    </div>
+  </div>
+  <div class="field">
+    <div><%= form.label :first_name, t('helpers.label.user.first_name') %></div>
+    <div><%= form.text_field :first_name, class: 'form-control' %></div>
+  </div>
+  <div class="field">
+    <div><%= form.label :last_name, t('helpers.label.user.last_name') %></div>
+    <div><%= form.text_field :last_name, class: 'form-control' %></div>
+  </div>
+  <div class="field">
+    <div><%= form.label :body, t('helpers.label.feedbacks.body') %></div>
+    <div><%= form.text_area :body, class: 'form-control', required: true %></div>
+  </div>
+  <div class="field">
+    <div><%= form.submit t('.send_feedback'), class: "btn btn-success" %></div>
+    <div><%= link_to t('.back'), root_path, class: "btn btn-primary" %></div>
+  </div>  
+<% end %>
