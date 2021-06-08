@@ -97,3 +97,7 @@ ru:
       failure: 'Произошла ошибка, попробуйте еще раз'
     form:
       send_feedback: 'Отправить отзыв'
+      email: 'E-mail'
+      first_name: 'Имя'
+      last_name: 'Фамилия'
+      body: 'Сообщение'

@@ -95,3 +95,7 @@ en:
       failure: 'Error, try again'
     form:
       send_feedback: 'Send feedback'
+      email: 'E-mail'
+      first_name: 'First name'
+      last_name: 'Last name'
+      body: 'Message'

@@ -2,7 +2,7 @@
   <%= render 'shared/errors', resource: @feedback %>
 
   <div class="field">  
-    <div><%= form.label :email, t('helpers.label.user.email') %></div>
+    <div><%= form.label :email, t('.email') %></div>
     <div>
       <%= form.email_field :email,
                             autocomplete: 'email',
@@ -13,15 +13,15 @@
     </div>
   </div>
   <div class="field">
-    <div><%= form.label :first_name, t('helpers.label.user.first_name') %></div>
+    <div><%= form.label :first_name, t('.first_name') %></div>
     <div><%= form.text_field :first_name, class: 'form-control' %></div>
   </div>
   <div class="field">
-    <div><%= form.label :last_name, t('helpers.label.user.last_name') %></div>
+    <div><%= form.label :last_name, t('.last_name') %></div>
     <div><%= form.text_field :last_name, class: 'form-control' %></div>
   </div>
   <div class="field">
-    <div><%= form.label :body, t('helpers.label.feedbacks.body') %></div>
+    <div><%= form.label :body, t('.body') %></div>
     <div><%= form.text_area :body, class: 'form-control', required: true %></div>
   </div>
   <div class="field">
