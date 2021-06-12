@@ -1,34 +1,36 @@
-<h1>Текущий тест: <%= @test_passage.test.title %></h1>
+<div class="container">
+  <h1>Текущий тест: <%= @test_passage.test.title %></h1>
 
-<p>
-  <%= question_number(@test_passage) %>
-</p>
-
-<%= content_tag :div, class: 'progress js-test-passage-progress', data: { value: @test_passage.passage_progress } do %>
-  <div class="progress-bar progress-bar-striped bg-success" role="progressbar">
-    <%= @test_passage.passage_progress %> %
-  </div>
-<% end %>
-
-<div>
   <p>
-    <%= @test_passage.current_question.body %>
+    <%= question_number(@test_passage) %>
   </p>
-</div>
 
-<%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
-  <div class="field">
-    <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
-      <div>
-        <%= b.check_box id: "answer_ids_#{b.object.id}" %>
-        <%= b.label %>
-      </div>
-    <% end %>
+  <%= content_tag :div, class: 'progress js-test-passage-progress', data: { value: @test_passage.passage_progress } do %>
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar">
+      <%= @test_passage.passage_progress %> %
+    </div>
+  <% end %>
+
+  <div>
+    <p>
+      <%= @test_passage.current_question.body %>
+    </p>
   </div>
-  <div class="field">
-    <%= link_to t('.add_gist'), gist_test_passage_path(@test_passage), method: :post %>
-  </div>
-  <div class="field">
-    <%= form.submit 'Следующий вопрос' %>
-  </div>
-<% end %>
+
+  <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
+    <div class="field">
+      <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
+        <div>
+          <%= b.check_box id: "answer_ids_#{b.object.id}" %>
+          <%= b.label %>
+        </div>
+      <% end %>
+    </div>
+    <div class="field">
+      <%= link_to t('.add_gist'), gist_test_passage_path(@test_passage), method: :post %>
+    </div>
+    <div class="field">
+      <%= form.submit 'Следующий вопрос' %>
+    </div>
+  <% end %>
+</div>
