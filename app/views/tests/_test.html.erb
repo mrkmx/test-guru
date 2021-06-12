@@ -1,6 +1,8 @@
-<tr>
-  <td><%= test.title %></td>
-  <td><%= test.level%></td>
-  <td><%= test.questions.count %></td>
-  <td><%= button_to t('tests.index.start'), start_test_path(test), class: 'btn btn-primary' %></td>
-</tr>
+<% if test.questions.any? %>
+  <tr>
+    <td><%= test.title %></td>
+    <td><%= test.level%></td>
+    <td><%= test.questions.count %></td>
+    <td><%= button_to t('tests.index.start'), start_test_path(test), class: 'btn btn-primary' %></td>
+  </tr>
+<% end %>

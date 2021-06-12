@@ -1,0 +1,10 @@
+Feedback from TestGuru
+=========================================
+<% if @feedback.first_name.present? || @feedback.last_name.present? %>
+  From: <%= @feedback.first_name %> <%= @feedback.last_name %>
+<% end %>
+E-mail: <%= @feedback.email %>
+
+Message:
+-----------------------------------------
+  <%= @feedback.body %>
