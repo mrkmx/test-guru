@@ -15,6 +15,9 @@
           <%= current_user.first_name || current_user.email %>
         </strong>
         <div class="navbar-nav">
+          <% if current_user.admin? %>
+            <%= link_to 'Админка', admin_tests_path, class: "nav-item nav-link" %>
+          <% end %>
           <%= link_to 'Тесты', tests_path, class: "nav-item nav-link" %>
           <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
         </div>
