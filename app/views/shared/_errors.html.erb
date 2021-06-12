@@ -1,4 +1,4 @@
-<% unless resource.nil? %>
+<% if resource.present? && resource.errors.any? %>
   <%= content_tag :div, class: 'js-resource-errors', data: { resource_id: resource.try(:id) } do %>
     <h2><%= t('.header', count: resource.errors.count) %>:</h2>
     <ul>
