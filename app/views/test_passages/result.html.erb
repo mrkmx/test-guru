@@ -1,14 +1,16 @@
-<h1><%= t('.header', title: @test_passage.test.title) %></h1>
+<div class="container">
+  <h1><%= t('.header', title: @test_passage.test.title) %></h1>
 
-<div>
-  <p>Ваш результат:</p>
-  <p class="test__result test__result--<%= success_class(@test_passage) %>">
-    <%= @test_passage.percent_result %> % <%= result_message(@test_passage) %>
-  </p>
-</div>
+  <div>
+    <p>Ваш результат:</p>
+    <p class="test__result test__result--<%= success_class(@test_passage) %>">
+      <%= @test_passage.percent_result %> % <%= result_message(@test_passage) %>
+    </p>
+  </div>
 
-<div>
-  <p>
-    <%= link_to 'К списку тестов', tests_path %>
-  </p>
+  <div>
+    <p>
+      <%= link_to 'К списку тестов', tests_path %>
+    </p>
+  </div>
 </div>
