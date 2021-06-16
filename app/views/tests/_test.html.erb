@@ -3,6 +3,13 @@
     <td><%= test.title %></td>
     <td><%= test.level%></td>
     <td><%= test.questions.count %></td>
+    <td>
+      <% if test.test_time.present?%>
+        <%= test.test_time%> <%=t('tests.index.minutes')%>
+      <% else %>
+        <%=t('tests.index.unlimited')%>
+      <% end %>
+    </td>
     <td><%= button_to t('tests.index.start'), start_test_path(test), class: 'btn btn-primary' %></td>
   </tr>
 <% end %>

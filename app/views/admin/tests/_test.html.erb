@@ -6,6 +6,13 @@
   <td><%= test.level%></td>
   <td><%= test.questions.count %></td>
   <td>
+    <% if test.test_time.present? %>
+      <%= test.test_time %> <%= t('admin.tests.index.minutes') %>
+    <% else %>
+      <%= t('admin.tests.index.unlimited') %>
+    <% end %>
+  </td>
+  <td>
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with action button groups">
       <div class="btn-group mr-2" role="group" aria-label="Safe Actions Group">
         <%= link_to t('admin.tests.index.show'), admin_test_path(test), class: 'btn btn-light' %>
