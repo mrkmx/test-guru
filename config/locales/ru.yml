@@ -30,6 +30,9 @@ ru:
       questions: 'Количество вопросов'
       actions: 'Действия'
       start: 'Начать тест'
+      test_time: 'Время прохождения'
+      minutes: ' мин'
+      unlimited: 'Неограниченно'
   test_passages:
     show:
       add_gist: "Отправить в gist"
@@ -54,6 +57,9 @@ ru:
         delete: 'Удалить'
         confirm: 'Уверены?'
         new_test: 'Создать новый тест'
+        test_time: 'Время прохождения'
+        minutes: ' мин'
+        unlimited: 'Неограниченно'
       new:
         header: 'Создать новый тест'
         back: 'Назад'
@@ -69,6 +75,7 @@ ru:
         confirm: 'Уверены?'
         new_question: 'Добавить новый вопрос'
         back: 'Назад'
+        test_time: 'Время прохождения'
       edit:
         header: 'Редактировать тест'
         back: 'Назад'

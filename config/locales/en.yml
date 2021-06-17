@@ -28,6 +28,9 @@ en:
       questions: 'Questions'
       actions: 'Actions'
       start: 'Start test'
+      test_time: 'Test time'
+      minutes: ' min'
+      unlimited: 'Unlimited'
   test_passages:
     show:
       add_gist: "Gist question"
@@ -52,6 +55,9 @@ en:
         delete: 'delete'
         confirm: 'Are you shure?'
         new_test: 'Create new test'
+        test_time: 'Test time'
+        minutes: ' min'
+        unlimited: 'Unlimited'
       new:
         header: 'Create new test'
         back: 'Back'
@@ -67,6 +73,7 @@ en:
         confirm: 'Are you shure?'
         new_question: 'Add new question'
         back: 'Back'
+        test_time: 'Test time'
       edit:
         header: 'Edit test'
         back: 'Back'

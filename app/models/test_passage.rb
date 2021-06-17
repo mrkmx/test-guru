@@ -36,6 +36,14 @@ class TestPassage < ApplicationRecord
     100 / questions_count * (current_question_number - 1)
   end
 
+  def time_is_over?
+    time_left.negative?
+  end
+
+  def time_left
+    test.test_time_to_sec - (Time.current - created_at)
+  end
+
   private
 
   def before_validation_set_next_question

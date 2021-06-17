@@ -18,6 +18,10 @@ class Test < ApplicationRecord
     by_category_title(title).order(title: :desc).pluck(:title)
   end
 
+  def test_time_to_sec
+    test_time * 60 if test_time.present?
+  end
+
   private
 
   def self.level_range(grade)

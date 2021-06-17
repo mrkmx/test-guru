@@ -1,6 +1,12 @@
 <div class="container">
   <h1>Текущий тест: <%= @test_passage.test.title %></h1>
 
+  <% if @test_passage.test.test_time.present? %>
+    <%= content_tag :div, class: 'js-timer', data:{time_left: @test_passage.time_left} do %>
+      <div class='js-time'></div>
+    <%end%>
+  <% end %>
+  
   <p>
     <%= question_number(@test_passage) %>
   </p>

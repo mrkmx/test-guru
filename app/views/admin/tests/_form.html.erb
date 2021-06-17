@@ -20,6 +20,10 @@
     </div>
   <% end %>
   <div class="field">
+    <div><%= f.label :test_time %></div>
+    <div><%= f.number_field :test_time, id: :test_test_time %></div>
+  </div>
+  <div class="field">
     <%= f.submit %>
   </div>
 <% end %>

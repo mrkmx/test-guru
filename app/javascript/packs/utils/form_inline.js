@@ -7,6 +7,7 @@ document.addEventListener('turbolinks:load', function() {
   }
   
   const errors = document.querySelector('.js-resource-errors')
+  if (!errors) return
   const resourceId = errors.dataset.resourceId
   
   formInlinekHandler(resourceId)
