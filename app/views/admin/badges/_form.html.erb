@@ -1,0 +1,18 @@
+<%= form_with model: [:admin, @badge], local: true, class: 'mb-5' do |f| %>
+  <%= render 'shared/errors', resource: @badge %>
+  <div class="field">
+    <div><%= f.label :title %></div>
+    <div><%= f.text_field :title %></div>
+  </div>
+  <div class="field">
+    <div><%= f.label :image %></div>
+    <div><%= f.select :image, options_for_select(Badge.images), prompt: true %></div>
+  </div>
+  <div class="field">
+    <div><%= f.label :rule %></div>
+    <div><%= f.select :rule, options_for_select(Badge::BADGE_RULES) %></div>
+  </div>
+  <div class="field">
+    <%= f.submit %>
+  </div>
+<% end %>
