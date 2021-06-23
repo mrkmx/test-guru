@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>Ваши бэйджи</h1>
+  <table class="table mb-5">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Иконка</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user_badges.each do |user_badge| %>
+        <tr>
+          <td><%= user_badge.title %></td>
+          <td><%= image_tag(user_badge.image, size: 60) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <h2>Доступные бэйджи</h2>
+  <table class="table mb-5">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Иконка</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @badges.each do |badge| %>
+      <tr>
+        <tr>
+          <td><%= badge.title %></td>
+          <td><%= image_tag(badge.image, size: 60) %></td>
+        </tr>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

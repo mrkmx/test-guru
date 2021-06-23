@@ -1,0 +1,20 @@
+<div class="container">
+  <h1><%= t('.title')%>: <%= @badge.title %></h1>
+
+  <p><%= image_tag(@badge.image, size: 60) %></p>
+
+  <h2><%= t('.users')%></h2>
+  <ul>
+    <% @badge.users.distinct.each do |user|%>
+      <li><%= user.email %> (<%= @badge.users.count%> бэйджа)</li>
+    <% end %>
+  </ul>
+  
+  <h2><%= t('.rule')%></h2>
+  <p><%= @badge.rule %></p>
+
+  <div>
+    <%= link_to t('.edit'), edit_admin_badge_path(@badge), class: 'btn btn-primary' %>
+    <%= link_to t('.back'), admin_badges_path, class: 'btn btn-primary' %>
+  </div>
+</div>

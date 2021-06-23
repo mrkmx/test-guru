@@ -7,6 +7,11 @@ class TestPassagesController < ApplicationController
 
     if @test_passage.completed? || @test_passage.time_is_over?
       TestsMailer.completed_test(@test_passage).deliver_now
+      if @test_passage.success?
+        badge = BadgesService.new(@test_passage)
+        badge.call
+        flash.now[:notice] = "Получен новый бэйдж"
+      end
       redirect_to result_test_passage_path(@test_passage)
     else
       render :show

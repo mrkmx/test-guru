@@ -13,6 +13,7 @@ class Test < ApplicationRecord
   scope :by_grade, -> (grade) { where(level: level_range(grade)) }
   scope :by_level, -> (level) { where(level: level) }
   scope :by_category_title, -> (title) { joins(:category).where('categories.title = ?', title) }
+  scope :by_category_id, -> (id) { joins(:category).where('categories.id = ?', id) }
 
   def self.by_category(title)
     by_category_title(title).order(title: :desc).pluck(:title)
